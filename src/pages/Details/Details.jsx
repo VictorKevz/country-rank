@@ -1,10 +1,11 @@
 import { ArrowBack } from "@mui/icons-material";
 import React, { useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { DataContext } from "../../App";
+import { DataContext, ThemeAppContext } from "../../App";
 import "./details.css"
 function Details() {
   const { fetchData, countryData } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
   const { cca3 } = useParams();
   useEffect(() => {
     const url = `https://restcountries.com/v3.1/alpha/${cca3}`;
@@ -47,7 +48,7 @@ function Details() {
           </div>
 
           {/* Population content */}
-          <div className="population-area">
+          <div className={`population-area ${!isDark && "light-text"}`}>
             <div className="population-wrapper">
               <p className="population">Population</p>
               <span className="divider"></span>
