@@ -1,0 +1,29 @@
+.regions-wrapper{
+    width: 100%;
+    color: var(--faded-gray);
+    margin-top: 3.4rem;
+}
+.regions-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 1.3rem;
+    align-items: center;
+    
+}
+
+.region-item{
+width: fit-content;
+font-weight: 400;
+font-size: 1.4rem;
+
+}
+ .selectedRegion{
+    height: 3.4rem;
+    border-radius: 1rem;
+    background-color: var(--black-2);
+    color: var(--light-gray);
+    padding: 0 1.25rem;
+    
+ }

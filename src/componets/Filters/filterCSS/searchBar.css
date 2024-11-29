@@ -1,0 +1,39 @@
+/* Search-bar styles....................... */
+/* Search-bar styles....................... */
+/* Search-bar styles....................... */
+.search-field {
+  max-width: 340px;
+  width: 100%;
+  height: 4.4rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--black-2);
+  position: relative;
+  border-radius: 1.2rem;
+  padding: 0 1.1rem;
+  gap: 1rem;
+
+}
+.search-input {
+  width: 100%;
+  height: 100%;
+  color: var(--faded-gray);
+  font-weight: 600;
+  caret-color: var(--blue);
+}
+.search-input::placeholder {
+  color: var(--faded-gray);
+  font-weight: 600;
+}
+.search-input:focus,
+.search-input:hover {
+  outline: none;
+  border: none;
+}
+
+.search-field:hover {
+  border: 1px solid var(--blue);
+}
+/* Search-bar styles....................... */
+/* Search-bar styles....................... */
+/* Search-bar styles....................... */

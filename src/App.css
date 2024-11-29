@@ -1,0 +1,43 @@
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  background-color: var(--black-2);
+  transition: 0.3s ease-in-out;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  overflow: hidden !important;
+}
+.label {
+  font-size: 1.2rem !important;
+  color: var(--faded-gray) !important;
+  font-weight: 700 !important;
+}
+/* LIGHT MODE STYLES......... */
+.light-body-bg {
+  background-color: var(--light-gray) !important;
+  color: var(--black-1) !important;
+  transition: 0.3s ease-in-out;
+}
+.light-card-bg {
+  background-color: #dee1e3 !important;
+  color: var(--black-1) !important;
+  transition: 0.3s ease-in-out;
+  border-color: #dee1e3 !important;
+}
+.light-text {
+  color: var(--black-1) !important;
+}
+.light-fields {
+  background-color: var(--light-gray) !important;
+}
