@@ -23,9 +23,6 @@ const neighborsArray = countryData?.countriesData.filter((country) =>
 );
 const { loading, error } = countryData;
 
-if (!dataObj) {
-  return <p>Country not found.</p>; 
-}
 
 
 if (loading && !dataObj) {
