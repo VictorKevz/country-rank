@@ -2,46 +2,60 @@ import { ArrowBack } from "@mui/icons-material";
 import React, { useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { DataContext, ThemeAppContext } from "../../App";
-import "./details.css"
+import "./details.css";
 function Details() {
-  const { fetchData, countryData } = useContext(DataContext);
+  const { countryData } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
   const { cca3 } = useParams();
-  useEffect(() => {
-    const url = `https://restcountries.com/v3.1/alpha/${cca3}`;
-    fetchData(url, "singleCountryData");
-  }, [cca3]);
 
-  const dataObj = countryData?.singleCountryData?.[0];
+ // Dynamically Extract the object with the matching cca3
+ const dataObj = countryData?.countriesData?.find(
+  (country) => country?.cca3 === cca3
+);
 
-  const { loading, error } = countryData;
-  if (loading) {
-    return (
-      <div className="loading-wrapper">
-        <h2 className="loading">Fetching Data...</h2>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div className="error-wrapper">
-        <h2 className="loading">An error occured : {error}</h2>
-      </div>
-    );
-  }
+const languageArray = dataObj?.languages ? Object.values(dataObj.languages) : [];
+const currencyArray = dataObj?.currencies ? Object.keys(dataObj.currencies) : [];
+
+const bordersArray = dataObj?.borders;
+// Keeps all objects whose cca3 matches the ones in the bordersArray
+const neighborsArray = countryData?.countriesData.filter((country) =>
+  bordersArray.includes(country?.cca3)
+);
+const { loading, error } = countryData;
+
+if (!dataObj) {
+  return <p>Country not found.</p>; 
+}
+
+
+if (loading && !dataObj) {
+  return (
+    <div className="loading-wrapper">
+      <h2 className="loading">Fetching Data...</h2>
+    </div>
+  );
+}
+if (error) {
+  return (
+    <div className="error-wrapper">
+      <h2 className="loading">An error occured : {error}</h2>
+    </div>
+  );
+}
   return (
     <section className="detailsPage-wrapper">
+      <Link to="/" className="link back">
+        <ArrowBack /> Back
+      </Link>
       <div className="detailsPage-content">
-        <Link to="/" className="link back">
-          <ArrowBack /> Back
-        </Link>
         <header className="detailsPage-header">
           <img
             src={dataObj?.flags?.png}
-            alt={dataObj?.flags?.alt}
+            alt={`The flag of ${dataObj?.name?.common}`}
             className="details-flag-img"
           />
-           {/* Names content */}
+
+          {/* Names content */}
           <div className="details-names">
             <h1 className="common-name">{dataObj?.name?.common}</h1>
             <h2 className="official-name">{dataObj?.name?.official}</h2>
@@ -54,6 +68,7 @@ function Details() {
               <span className="divider"></span>
               <p className="value">{dataObj?.population.toLocaleString()}</p>
             </div>
+
             {/* Area content */}
             <div className="area-wrapper">
               <p className="area">Area(km²)</p>
@@ -62,6 +77,56 @@ function Details() {
             </div>
           </div>
         </header>
+
+        {/* Main Details content */}
+        <ul className="main-details-wrapper">
+          <li className="item">
+            Capital <span className="value">{dataObj?.capital?.[0]}</span>
+          </li>
+          <li className="item">
+            Subregion <span className="value">{dataObj?.subregion}</span>
+          </li>
+          <li className="item">
+            Languages
+            <span
+              className={`value lang ${
+                languageArray.length > 1 && "small-text"
+              }`}
+            >
+              {languageArray.join(", ")}
+            </span>
+          </li>
+
+          {/* Currency content */}
+          <li className="item">
+            Currencies
+            {currencyArray.map((currency, i) => (
+              <ul key={i} className="curr-value-wrapper">
+                <li className="value">
+                  {dataObj?.currencies?.[currency]?.name}
+                </li>
+              </ul>
+            ))}
+          </li>
+          <li className="item last">
+            Continents <span className="value">{dataObj?.continents?.[0]}</span>
+          </li>
+        </ul>
+        {/* Neighboring Countries content */}
+        <div className="borders-wrapper">
+          <h3 className="border-heading">Neighboring Countries</h3>
+        <ul className="borders-list">
+          {neighborsArray.map((border)=>(
+            <li key={border?.cca3} className="border-item">
+              <Link to={`/details/${border?.cca3}`} className="border-link">
+              <img src={border?.flags?.png} alt={`Flag of ${border?.name?.common}`} className="border-img" />
+              {border?.name?.common}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        </div>
+        
       </div>
     </section>
   );

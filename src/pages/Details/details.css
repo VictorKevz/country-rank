@@ -1,9 +1,12 @@
 .detailsPage-wrapper{
+    max-width: 1280px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 2rem 5vh 2rem;
+    /* justify-content: center; */
+    padding: 0 2rem 9rem 2rem;
+    position: relative;
+    flex-direction: column;
 }
 .detailsPage-content{
     max-width: 720px;
@@ -22,11 +25,12 @@
 
 }
 .link.back{
-    align-self: flex-start;
-    
     position: absolute;
-    left: 2rem;
-    top: 2rem;
+    align-self: flex-start;
+   left: 0;
+   top: 2rem;
+   background-color: var(--black-1);
+   box-shadow: 0 0 1rem #0f66bd25;
 }
 .detailsPage-header{
     width: 100%;
@@ -86,4 +90,77 @@
 .population,.value,.area{
     font-size: 1.4rem;
     font-weight: 500;
+}
+.main-details-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    /* padding: 0 2rem; */
+    
+}
+.item{
+    width: 100%;
+    cursor: auto;
+    justify-content: space-between;
+    color: var(--faded-gray);
+    padding: 2.7rem 2rem;
+    border-top: 1px solid var(--saturated-gray);
+}
+.item.last{
+    border-bottom: 1px solid var(--saturated-gray);
+   
+}
+.value{
+    color: var(--light-gray);
+}
+.value.lang{
+display: flex;
+flex-wrap: wrap;
+max-width: 150px;
+text-align: right;
+line-height: 1.4;
+
+}
+.small-text{
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: right;
+}
+.borders-wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2.8rem;
+    padding: 0 2rem;
+}
+.border-heading{
+    font-size:1.6rem ;
+    color: var(--faded-gray);
+}
+.borders-list{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    margin-top: 2.2rem;
+    flex-wrap: wrap;
+}
+.border-item{
+    
+    color: var(--light-gray);
+    
+}
+.border-link{
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 1rem;
+    font-weight: 600;
+}
+.border-img{
+    width: 8rem ;
+    height: 6rem;
+    border-radius: 1.2rem;
 }

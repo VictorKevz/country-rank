@@ -16,11 +16,11 @@ function Home() {
     if (savedData) {
       dispatchCountryData({
         type: "UPDATE_DATA",
-        payload: { key: "countriesData", data: savedData },
+        payload: { data: savedData },
       });
     } else {
       const url = "https://restcountries.com/v3.1/all";
-      fetchData(url, "countriesData");
+      fetchData(url);
     }
   }, []);
   const sortByData = [
