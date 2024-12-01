@@ -163,7 +163,7 @@
     align-items: flex-start;
   }
   .search-field {
-    max-width: 100%;
+    max-width: 100%!important;
   }
   .desktop {
     display: none !important;

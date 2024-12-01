@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import {  ThemeAppContext } from "../../App";
+import { ThemeAppContext } from "../../App";
 import "../CountryTable/countryTable.css";
 import { Link } from "react-router-dom";
-import {  Launch } from "@mui/icons-material";
+import { Launch } from "@mui/icons-material";
 
 function CountryTable({ data }) {
   const { isDark } = useContext(ThemeAppContext);
@@ -20,7 +20,7 @@ function CountryTable({ data }) {
       <thead className="desktop">
         <tr className="tr-head">
           {thData.map((item, i) => (
-            <th key={i} className={`th label `}>
+            <th key={i} className={`th label`} scope="col">
               {item}
             </th>
           ))}
@@ -28,20 +28,37 @@ function CountryTable({ data }) {
       </thead>
       <tbody className="desktop">
         {data?.map((country) => (
-          <tr key={country?.cca3} className={`tr ${!isDark && "light-text"}`}>
-            <td className="td flag">
+          <tr
+            key={country?.cca3}
+            className={`tr ${!isDark && "light-text"}`}
+            role="row"
+          >
+            <td className="td flag" role="cell">
               <img
                 src={country?.flags?.png}
                 alt={`${country?.name?.common} Flag`}
                 className="flag-img"
+                aria-label={`${country?.name?.common} flag`}
               />
             </td>
-            <td className="td">{country?.name?.common}</td>
-            <td className="td">{country?.population.toLocaleString()}</td>
-            <td className="td">{country?.area.toLocaleString()}</td>
-            <td className="td">{country?.region}</td>
-            <td className="td">
-              <Link to={`/details/${country?.cca3}`} className="link table">
+            <td className="td" role="cell">
+              {country?.name?.common}
+            </td>
+            <td className="td" role="cell">
+              {country?.population.toLocaleString()}
+            </td>
+            <td className="td" role="cell">
+              {country?.area.toLocaleString()}
+            </td>
+            <td className="td" role="cell">
+              {country?.region}
+            </td>
+            <td className="td" role="cell">
+              <Link
+                to={`/details/${country?.cca3}`}
+                className="link table"
+                aria-label={`View details for ${country?.name?.common}`}
+              >
                 <Launch className="launch-icon" />
               </Link>
             </td>
@@ -49,27 +66,21 @@ function CountryTable({ data }) {
         ))}
       </tbody>
 
-      {/* 
-        Mobile Content
-        *
-        *
-        * 
-        * 
-        * 
-        * 
-        * 
-        */}
+      {/* Mobile Content */}
       <tbody className="mobile">
         {data?.map((country) => (
-          <tr key={country?.cca3} className={`tr ${!isDark && "light-body-bg"}`}>
-            
-
-            <td className="td">
+          <tr
+            key={country?.cca3}
+            className={`tr ${!isDark && "light-body-bg"}`}
+            role="row"
+          >
+            <td className="td" role="cell">
               <div className="flag-item">
                 <img
                   src={country?.flags?.png}
                   alt={`${country?.name?.common} Flag`}
                   className="flag-img"
+                  aria-label={`${country?.name?.common} flag`}
                 />
               </div>
               <div>
@@ -86,8 +97,12 @@ function CountryTable({ data }) {
                 <strong>Region:</strong> {country?.region}
               </div>
             </td>
-            <td className="td">
-              <Link to={`/details/${country?.cca3}`} className="link table">
+            <td className="td" role="cell">
+              <Link
+                to={`/details/${country?.cca3}`}
+                className="link table"
+                aria-label={`View details for ${country?.name?.common}`}
+              >
                 <Launch className="launch-icon" />
               </Link>
             </td>

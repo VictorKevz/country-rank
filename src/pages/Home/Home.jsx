@@ -106,7 +106,6 @@ function Home() {
 
   const totalCountries = sortedData?.length;
 
-
   {
     /* 
     .
@@ -117,40 +116,48 @@ function Home() {
   const itemsPerPage = 6; // Number of items to display per page
   const totalItems = sortedData?.length; // Total number of items in the sorted data
   const totalPages = Math.ceil(totalItems / itemsPerPage); // Total number of pages based on items per page
-  
+
   const indexOfFirstItem = currentPageIndex * itemsPerPage; // Index of the first item on the current page
   const indexOfLastItem = indexOfFirstItem + itemsPerPage; // Index of the item just after the last item on the current page
-  
+
   const pageItems = sortedData?.slice(indexOfFirstItem, indexOfLastItem); // Extract items for the current page
 
   return (
-    <section className="home-wrapper">
-      <div className={`home-content-container ${!isDark && "light-card-bg"}`}>
+    <section className="home-wrapper" aria-labelledby="home-header">
+      <div
+        className={`home-content-container ${!isDark && "light-card-bg"}`}
+        role="main"
+      >
         <header className="home-header">
-          <h1 className="total-countries">
+          <h1 id="home-header" className="total-countries" aria-live="polite">
             {totalCountries > 0
               ? `Found ${totalCountries} Countries`
               : "No countries Found"}
           </h1>
-          <SearchBar />
+          <SearchBar aria-label="Search countries" />
         </header>
-        <div className="filters-countryTable-wrapper">
+        <div
+          className="filters-countryTable-wrapper"
+          aria-describedby="filter-info"
+        >
           <div className="filters-wrappers">
             <Dropdown
               data={sortByData}
               id={"sortBy"}
               selectedOption={filters.sortBy}
+              aria-label="Sort countries by"
             />
-            <Regions />
-            <Membership />
+            <Regions aria-label="Filter by regions" />
+            <Membership aria-label="Filter by membership status" />
           </div>
-          <CountryTable data={pageItems} />
+          <CountryTable data={pageItems} aria-live="polite" />
         </div>
       </div>
       <Pagination
         data={totalPages}
         setCurrentPageIndex={setCurrentPageIndex}
         currentPageIndex={currentPageIndex}
+        aria-label="Pagination for country list"
       />
     </section>
   );
