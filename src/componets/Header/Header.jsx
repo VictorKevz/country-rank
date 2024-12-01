@@ -5,6 +5,7 @@ import { DataContext, ThemeAppContext } from "../../App";
 import { DarkMode, LightMode } from "@mui/icons-material";
 import "./header.css";
 import Dropdown from "../Filters/Dropdown";
+import { Link } from "react-router-dom";
 
 function Header() {
   const { isDark, setDark } = useContext(ThemeAppContext);
@@ -24,13 +25,13 @@ function Header() {
   return (
     <header className={`header-wrapper ${!isDark && "light-header-bg"}`}>
       <div className="header-content">
-        <figure>
+        <Link to={"/"}>
           <img
             src={isDark ? logo : logoLight}
             alt="Country Rank's logo"
             className="logo"
           />
-        </figure>
+        </Link>
         <div className={`theme-fonts-wrapper ${!isDark && "light-text"}`}>
           <Dropdown
             data={dropDownData}

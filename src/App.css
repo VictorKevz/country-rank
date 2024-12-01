@@ -23,21 +23,40 @@
   color: var(--faded-gray) !important;
   font-weight: 700 !important;
 }
-/* LIGHT MODE STYLES......... */
+.link:hover,.dropdown-btn:hover,.theme-btn:hover{
+  transform: translateY(-2.5px)!important;
+  transition: 0.3s ease-in-out!important;
+}
+/* 
+*
+*
+LIGHT MODE STYLES
+*
+*
+ */
 .light-body-bg {
   background-color: #fff !important;
   color: var(--black-1) !important;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out !important;
+ 
 }
 .light-card-bg {
-  background-color: var(--light-gray)!important;
+  background-color: #eceef5 !important;
   color: var(--black-1) !important;
-  transition: 0.3s ease-in-out;
-  border-color: #dee1e3 !important;
+  transition: 0.3s ease-in-out!important;
+  border: 1px solid #c2c5d1 !important;
+  box-shadow: 0 0 2rem #07112d27 !important;
 }
 .light-text {
   color: var(--black-1) !important;
+  transition: 0.3s ease-in-out!important;
+
 }
 .light-fields {
   background-color: #fff !important;
+  box-shadow: 0 0 2rem #07112d27 !important;
+  border: 1px solid #a2a3a9 !important;
+  transition: 0.3s ease-in-out!important;
+
+
 }

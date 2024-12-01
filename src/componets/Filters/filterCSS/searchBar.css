@@ -29,9 +29,11 @@
   outline: none;
   border: none;
 }
-
+.search-field:focus-within {
+  border: 1px solid var(--blue)!important;
+}
 .search-field:hover {
-  border: 1px solid var(--blue);
+  border: 1px solid var(--blue)!important;
 }
 /* Search-bar styles....................... */
 /* Search-bar styles....................... */
