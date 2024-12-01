@@ -9,10 +9,10 @@ function Dropdown({ data, id, selectedOption }) {
 
   const [dropDownOpen, setDropDown] = useState(false);
 
-
+const isSortBy = id === "sortBy";
   return (
-    <div className={`dropdown-wrapper `}>
-      {id === "sortBy" && <h2 className="label">Sort by</h2>}
+    <div className={`dropdown-wrapper ${!isSortBy && "font-wrapper"} `}>
+      {isSortBy && <h2 className="label sortBy">Sort by</h2>}
       <button
         type="button"
         className={`dropdown-btn ${!isDark && "light-dropdown-bg"}`}

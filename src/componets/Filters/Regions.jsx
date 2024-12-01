@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { DataContext } from "../../App";
+import { DataContext, ThemeAppContext } from "../../App";
 import "../Filters/filterCSS/regions.css";
 function Regions() {
   const { countryData, dispatchFilters, filters } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
+
   const regions = new Set(
     countryData?.countriesData?.map((country) => country?.region)
   );
@@ -16,7 +18,7 @@ function Regions() {
           return (
             <li
               key={i}
-              className={`region-item ${isSelected && "selectedRegion"}`}
+              className={`region-item ${isSelected && "selectedRegion"} ${!isDark && isSelected && "light-selectedRegion"}`}
               onClick={() =>
                 dispatchFilters({ type: "UPDATE_REGIONS", region })
               }

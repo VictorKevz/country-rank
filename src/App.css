@@ -25,12 +25,12 @@
 }
 /* LIGHT MODE STYLES......... */
 .light-body-bg {
-  background-color: var(--light-gray) !important;
+  background-color: #fff !important;
   color: var(--black-1) !important;
   transition: 0.3s ease-in-out;
 }
 .light-card-bg {
-  background-color: #dee1e3 !important;
+  background-color: var(--light-gray)!important;
   color: var(--black-1) !important;
   transition: 0.3s ease-in-out;
   border-color: #dee1e3 !important;
@@ -39,5 +39,5 @@
   color: var(--black-1) !important;
 }
 .light-fields {
-  background-color: var(--light-gray) !important;
+  background-color: #fff !important;
 }

@@ -27,3 +27,7 @@ font-size: 1.4rem;
     padding: 0 1.25rem;
     
  }
+ .light-selectedRegion{
+    background-color: #fff!important;
+    color: var(--black-1) !important;
+ }

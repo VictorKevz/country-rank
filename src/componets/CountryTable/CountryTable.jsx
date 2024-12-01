@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { DataContext } from "../../App";
+import {  ThemeAppContext } from "../../App";
 import "../CountryTable/countryTable.css";
 import { Link } from "react-router-dom";
-import { ArrowForward, Launch } from "@mui/icons-material";
+import {  Launch } from "@mui/icons-material";
 
 function CountryTable({ data }) {
-  const { countryData, filters } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
 
   const thData = [
     "Flag",
@@ -17,25 +17,18 @@ function CountryTable({ data }) {
   ];
   return (
     <table className="countries-table-wrapper">
-      <thead>
-        <tr className="tr-head desktop">
+      <thead className="desktop">
+        <tr className="tr-head">
           {thData.map((item, i) => (
-            <th key={i} className={`th label ${item === "Flag" && "flag"}`}>
+            <th key={i} className={`th label `}>
               {item}
             </th>
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody className="desktop">
         {data?.map((country) => (
-          <tr key={country?.cca3} className="tr">
-            <tr className="tr-head mobile">
-          {thData.map((item, i) => (
-            <th key={i} className={`th label ${item === "Flag" && "flag"}`}>
-              {item}
-            </th>
-          ))}
-        </tr>
+          <tr key={country?.cca3} className={`tr ${!isDark && "light-text"}`}>
             <td className="td flag">
               <img
                 src={country?.flags?.png}
@@ -48,9 +41,54 @@ function CountryTable({ data }) {
             <td className="td">{country?.area.toLocaleString()}</td>
             <td className="td">{country?.region}</td>
             <td className="td">
-             
               <Link to={`/details/${country?.cca3}`} className="link table">
-                <Launch className="launch-icon"/>
+                <Launch className="launch-icon" />
+              </Link>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+
+      {/* 
+        Mobile Content
+        *
+        *
+        * 
+        * 
+        * 
+        * 
+        * 
+        */}
+      <tbody className="mobile">
+        {data?.map((country) => (
+          <tr key={country?.cca3} className={`tr ${!isDark && "light-body-bg"}`}>
+            
+
+            <td className="td">
+              <div className="flag-item">
+                <img
+                  src={country?.flags?.png}
+                  alt={`${country?.name?.common} Flag`}
+                  className="flag-img"
+                />
+              </div>
+              <div>
+                <strong>Name:</strong> {country?.name?.common}
+              </div>
+              <div>
+                <strong>Population:</strong>{" "}
+                {country?.population.toLocaleString()}
+              </div>
+              <div>
+                <strong>Area:</strong> {country?.area.toLocaleString()}
+              </div>
+              <div>
+                <strong>Region:</strong> {country?.region}
+              </div>
+            </td>
+            <td className="td">
+              <Link to={`/details/${country?.cca3}`} className="link table">
+                <Launch className="launch-icon" />
               </Link>
             </td>
           </tr>

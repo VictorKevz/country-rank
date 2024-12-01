@@ -41,10 +41,11 @@ if (error) {
 }
   return (
     <section className="detailsPage-wrapper">
-      <Link to="/" className="link back">
+      
+      <div className={`detailsPage-content ${!isDark && "light-card-bg"}`}>
+      <Link to="/" className={`link back ${!isDark && "light-body-bg"}`}>
         <ArrowBack /> Back
       </Link>
-      <div className="detailsPage-content">
         <header className="detailsPage-header">
           <img
             src={dataObj?.flags?.png}
@@ -53,24 +54,24 @@ if (error) {
           />
 
           {/* Names content */}
-          <div className="details-names">
+          <div className={`details-names ${!isDark && "light-text"}`}>
             <h1 className="common-name">{dataObj?.name?.common}</h1>
             <h2 className="official-name">{dataObj?.name?.official}</h2>
           </div>
 
           {/* Population content */}
           <div className={`population-area ${!isDark && "light-text"}`}>
-            <div className="population-wrapper">
+            <div className={`population-wrapper ${!isDark && "light-body-bg"}`}>
               <p className="population">Population</p>
-              <span className="divider"></span>
-              <p className="value">{dataObj?.population.toLocaleString()}</p>
+              <span className={`divider ${!isDark && "light-card-bg"}`}></span>
+              <p className={`value ${!isDark && "light-text"}`}>{dataObj?.population.toLocaleString()}</p>
             </div>
 
             {/* Area content */}
-            <div className="area-wrapper">
+            <div className={`area-wrapper ${!isDark && "light-body-bg"}`}>
               <p className="area">Area(km²)</p>
-              <span className="divider"></span>
-              <p className="value">{dataObj?.area.toLocaleString()}</p>
+              <span className={`divider ${!isDark && "light-card-bg"}`}></span>
+              <p className={`value ${!isDark && "light-text"}`}>{dataObj?.area.toLocaleString()}</p>
             </div>
           </div>
         </header>
@@ -78,17 +79,17 @@ if (error) {
         {/* Main Details content */}
         <ul className="main-details-wrapper">
           <li className="item">
-            Capital <span className="value">{dataObj?.capital?.[0]}</span>
+            Capital <span className={`value ${!isDark && "light-text"}`}>{dataObj?.capital?.[0]}</span>
           </li>
           <li className="item">
-            Subregion <span className="value">{dataObj?.subregion}</span>
+            Subregion <span className={`value ${!isDark && "light-text"}`}>{dataObj?.subregion}</span>
           </li>
           <li className="item">
             Languages
             <span
               className={`value lang ${
                 languageArray.length > 1 && "small-text"
-              }`}
+              } ${!isDark && "light-text"}`}
             >
               {languageArray.join(", ")}
             </span>
@@ -99,14 +100,14 @@ if (error) {
             Currencies
             {currencyArray.map((currency, i) => (
               <ul key={i} className="curr-value-wrapper">
-                <li className="value">
+                <li className={`value ${!isDark && "light-text"}`}>
                   {dataObj?.currencies?.[currency]?.name}
                 </li>
               </ul>
             ))}
           </li>
           <li className="item last">
-            Continents <span className="value">{dataObj?.continents?.[0]}</span>
+            Continents <span className={`value ${!isDark && "light-text"}`}>{dataObj?.continents?.[0]}</span>
           </li>
         </ul>
         {/* Neighboring Countries content */}

@@ -1,7 +1,12 @@
 import { ArrowCircleLeft, ArrowCircleRight } from "@mui/icons-material";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { ThemeAppContext } from "../../App";
 
 function Pagination({ data, setCurrentPageIndex, currentPageIndex }) {
+  const { isDark } = useContext(ThemeAppContext);
+
+
+
   // Make sure current page index never goes out of range
   // Set it to the last page when sorted data changes
   useEffect(() => {
@@ -19,7 +24,7 @@ function Pagination({ data, setCurrentPageIndex, currentPageIndex }) {
             <li key={i} className="pagination-item">
               <button
                 type="button"
-                className={`page-num-btn ${isCurrent && "current"}`}
+                className={`page-num-btn ${isCurrent && "current"} ${!isDark && "light-card-bg"}`}
                 onClick={() => setCurrentPageIndex(i)}
               >
                 {i + 1}

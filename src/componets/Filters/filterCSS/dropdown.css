@@ -9,15 +9,18 @@
 
 .dropdown-btn {
   height: 4.4rem;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   color: white;
   background-color: var(--black-2);
   justify-content: space-between;
   padding: 0 1rem;
   font-size: 1.5rem;
   width: 100%;
-  margin-top: 1.3rem;
 
+
+}
+.label.sortBy{
+  margin-bottom: 1.3rem;
 
 }
 .arrow-icon {

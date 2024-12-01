@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { DataContext } from "../../App";
+import { DataContext, ThemeAppContext } from "../../App";
 import checkMark from "../../assets/images/check.svg";
 import "../Filters/filterCSS/membership.css"
 
 function Membership() {
   const { filters, dispatchFilters } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
   const membershipData = [
     { id: "unMember", text: "Member of the United Nations" },
     { id: "independent", text: "Independent" },
   ];
   return (
-    <div className="membership-wrapper">
+    <div className={`membership-wrapper ${!isDark && "light-text"}`}>
       <h3 className="label">Status</h3>
       <ul className="membership-list">
         {membershipData.map((item) => {
