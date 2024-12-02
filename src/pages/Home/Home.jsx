@@ -122,6 +122,20 @@ function Home() {
 
   const pageItems = sortedData?.slice(indexOfFirstItem, indexOfLastItem); // Extract items for the current page
 
+  if (countryData?.loading && countryData?.countriesData?.length === 0) {
+    return (
+      <div className="loading-wrapper">
+        <p className="loading">Fetching data. Please wait!</p>
+      </div>
+    );
+  }
+  if (countryData?.error) {
+    return (
+      <div className="error-wrapper">
+        <p className="error">An error occured: {countryData?.error}</p>
+      </div>
+    );
+  }
   return (
     <section className="home-wrapper" aria-labelledby="home-header">
       <div
